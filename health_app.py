@@ -20,10 +20,10 @@ CORS(app, supports_credentials=True, origins=[
 
 # --- DATABASE CONNECTION ---
 def init_connection():
-    ATLAS_URI = "mongodb+srv://johansam12:DARK*haunt12@healthanalyzer.u7wiynq.mongodb.net/?appName=HealthAnalyzer"
+   # ATLAS_URI = "mongodb+srv://johansam12:DARK*haunt12@healthanalyzer.u7wiynq.mongodb.net/?appName=HealthAnalyzer"
     LOCAL_URI = "mongodb://localhost:27017/"
     try:
-        client = pymongo.MongoClient(ATLAS_URI, tlsCAFile=certifi.where(), serverSelectionTimeoutMS=3000)
+        client = pymongo.MongoClient("mongodb+srv://johansam12:DARK*haunt12@healthanalyzer.u7wiynq.mongodb.net/?appName=HealthAnalyzer", tlsCAFile=certifi.where())
         client.server_info()
         return client
     except:
