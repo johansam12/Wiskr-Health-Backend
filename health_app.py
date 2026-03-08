@@ -12,7 +12,10 @@ app = Flask(__name__)
 app.secret_key = "super_secret_healthcare_key"
 
 # Enable CORS so React (running on a different port) can talk to Flask safely
-CORS(app, supports_credentials=True, origins=["http://localhost:5173"])
+CORS(app, supports_credentials=True, origins=[
+    "https://wiskr-health-frontend.vercel.app/",
+    "http://localhost:5173"
+])
 
 # --- DATABASE CONNECTION ---
 def init_connection():
