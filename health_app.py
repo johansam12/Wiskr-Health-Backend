@@ -19,19 +19,14 @@ CORS(app, supports_credentials=True, origins=[
 ])
 
 # --- DATABASE CONNECTION ---
+# --- DATABASE CONNECTION ---
 def init_connection():
-   # ATLAS_URI = "mongodb+srv://johansam12:DARK*haunt12@healthanalyzer.u7wiynq.mongodb.net/?appName=HealthAnalyzer"
-    LOCAL_URI = "mongodb://localhost:27017/"
-    try:
-        client = pymongo.MongoClient("mongodb+srv://johansam12:DARK*haunt12@healthanalyzer.u7wiynq.mongodb.net/?appName=HealthAnalyzer", tlsCAFile=certifi.where())
-        client.server_info()
-        return client
-    except:
-        try:
-            client = pymongo.MongoClient(LOCAL_URI, serverSelectionTimeoutMS=2000)
-            return client
-        except:
-            return None
+    # Notice we replaced the * with %2A so the URL doesn't break!
+    ATLAS_URI = "mongodb+srv://johansam12:DARK%2Ahaunt12@healthanalyzer.u7wiynq.mongodb.net/?appName=HealthAnalyzer"
+    
+    # Connect directly to the cloud. No local fallback!
+    client = pymongo.MongoClient(ATLAS_URI, tlsCAFile=certifi.where())
+    return client
 
 client = init_connection()
 
