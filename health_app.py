@@ -19,9 +19,8 @@ CORS(app, supports_credentials=True, origins=[
 ])
 
 # --- DATABASE CONNECTION ---
-# --- DATABASE CONNECTION ---
 def init_connection():
-    # Notice we replaced the * with %2A so the URL doesn't break!
+    
     ATLAS_URI = "mongodb+srv://johansam12:DARK%2Ahaunt12@healthanalyzer.u7wiynq.mongodb.net/?appName=HealthAnalyzer"
     
     # Connect directly to the cloud. No local fallback!
